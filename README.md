@@ -2,6 +2,8 @@
 
 **Integrates [standard] into your tape tests.** This allows you to enforce a "one true" JavaScript coding style in your project via [tape][] tests.
 
+[![Status](https://travis-ci.org/rstacruz/tape-standard.svg?branch=master)](https://travis-ci.org/rstacruz/tape-standard "See test builds")
+
 ## Features
 
 This offers a finer alternative to adding *standard* into package.json's `scripts.test` block.
