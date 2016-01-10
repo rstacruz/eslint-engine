@@ -1,0 +1,23 @@
+{
+  "name": "tape-standard",
+  "version": "1.0.0",
+  "description": "Lint files using Standard in tape tests",
+  "main": "index.js",
+  "scripts": {
+    "test": "node test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rstacruz/tape-standard.git"
+  },
+  "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/rstacruz/tape-standard/issues"
+  },
+  "homepage": "https://github.com/rstacruz/tape-standard#readme",
+  "devDependencies": {
+    "standard": "5.4.1",
+    "tape": "4.4.0"
+  }
+}
