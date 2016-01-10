@@ -1,6 +1,6 @@
 module.exports = function tapeStandard (options) {
   if (!options) options = {}
-  var standard = options.module || require('standard')
+  var standard = options.using || require('standard')
   var files = options.files || []
   var sOptions = options.options || {}
 

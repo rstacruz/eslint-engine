@@ -57,7 +57,7 @@ npm install --save-dev semistandard
 
 ```js
 test('standard', require('tape-standard')({
-module: require('semistandard')
+  using: require('semistandard')
 }))
 ```
 
