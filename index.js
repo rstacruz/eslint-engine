@@ -1,10 +1,8 @@
 var eslint = require('./eslint')
 
-module.exports = function tapeEslint (files, options) {
-  if (!options) options = {}
-
+module.exports = function tapeEslint (options) {
   return function (t) {
-    eslint(files, options, function (err, res) {
+    eslint(options, function (err, res) {
       if (err) return t.fail(err)
       errorify(t, res)
       t.end()
