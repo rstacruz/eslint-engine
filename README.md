@@ -27,25 +27,21 @@ npm install --save-dev tape-eslint eslint
 
 Then add this test file to your tape suite:
 
-```jsj
+```js
 test('eslint', require('tape-eslint')())
 ```
 
+Then create an `.eslintrc` in your project:
+
+```
+{
+  "rules": {
+    "semi": [2, "never"]
+  }
+}
+```
+
 ### Customization
-
-* #### eslint
-  It picks up your project's `.eslintrc` by default. If you' dlike to specify your own eslint config, use:
-
-  ```js
-  test('eslint', require('tape-eslint')({
-    eslint: {
-      extends: ['standard'],
-      rules: {
-        semi: [2, 'never']
-      }
-    }
-  }))
-  ```
 
 * #### files
   It scans `**/*.js` and `**/*.jsx` by default. To configure what files to consume, use:
@@ -65,6 +61,17 @@ test('eslint', require('tape-eslint')())
   }))
   ```
 
+* #### eslint
+  To specify options to pass onto `eslint.CLIEngine`, add them here. See [eslint's source](https://github.com/eslint/eslint/blob/v1.10.3/lib/cli-engine.js#L47-L60) for details.
+
+  ```js
+  test('eslint', require('tape-eslint')({
+    eslint: {
+      configFile: path.join(__dirname, 'eslintrc.json')
+    }
+  }))
+  ```
+
 [ignores]: /eslint.js
 
 ## Standard
@@ -76,11 +83,14 @@ npm i --save-dev tape-eslint eslint eslint-plugin-standard eslint-config-standar
 ```
 
 ```js
-test('eslint', require('tape-eslint')({
-  eslint: {
-    extends: ['standard']
-  }
-}))
+/* .eslintrc */
+{
+  "extends": ['standard']
+}
+```
+
+```js
+test('eslint', require('tape-eslint')())
 ```
 
 [standard]: https://www.npmjs.com/package/standard
