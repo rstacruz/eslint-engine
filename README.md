@@ -2,18 +2,18 @@
 
 > Integrate [eslint][] into your tape tests
 
-![](https://raw.githubusercontent.com/rstacruz/tape-eslint/gh-pages/screenshot.png)
+![](https://raw.githubusercontent.com/rstacruz/tape-standard/gh-pages/screenshot.png)
 
 [![Status](https://travis-ci.org/rstacruz/tape-eslint.svg?branch=master)](https://travis-ci.org/rstacruz/tape-eslint "See test builds")
 
 [eslint]: http://eslint.org/
 
-## Features
+## Rationale
 
-This offers a finer alternative to adding *eslint* as a separate test step.
+This offers a finer alternative to adding the *eslint* command as a separate test step in your `npm test`.
 
 * Runs in the same node process as tape, removing maybe 500ms of startup time.
-* Painlessly integrate standard into your travisci.org tests.
+* Painlessly integrate eslint into your travisci.org tests.
 
 (Your speed gains may be a bit different from my Pentium II, of course.)
 
@@ -31,13 +31,41 @@ Then add this test file to your tape suite:
 test('eslint', require('tape-eslint')())
 ```
 
-To configure what files to consume:
+### Customization
 
-```js
-test('eslint', require('tape-eslint')({
-  files: [ 'index.js', 'test/*.js' ]
-}))
-```
+* #### eslint
+  It picks up your project's `.eslintrc` by default. If you' dlike to specify your own eslint config, use:
+
+  ```js
+  test('eslint', require('tape-eslint')({
+    eslint: {
+      extends: ['standard'],
+      rules: {
+        semi: [2, 'never']
+      }
+    }
+  }))
+  ```
+
+* #### files
+  It scans `**/*.js` and `**/*.jsx` by default. To configure what files to consume, use:
+
+  ```js
+  test('eslint', require('tape-eslint')({
+    files: [ 'index.js', 'test/*.js' ]
+  }))
+  ```
+
+* #### ignore
+  Some files are [ignored by default][ignores]. To add more files to ignore, use:
+
+  ```js
+  test('eslint', require('tape-eslint')({
+    ignore: [ 'app/**' ]
+  }))
+  ```
+
+[ignores]: /eslint.js
 
 ## Standard
 
