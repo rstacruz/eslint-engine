@@ -31,10 +31,7 @@ var DEFAULT_PATTERNS = [
 /*
  * A simpler interface to eslint.
  *
- *     runEslint({
- *       files: ['lib/*.js'],
- *       eslint: { extends: [ 'standard' ] }
- *     }, (err, res) => {
+ *     runEslint({ files: ['lib/*.js'] }, (err, res) => {
  *       // ...
  *     })
  *
