@@ -14,8 +14,11 @@ This offers a finer alternative to adding the *eslint* command as a separate tes
 
 * Runs in the same node process as tape, removing maybe 500ms of startup time.
 * Painlessly integrate eslint into your travisci.org tests.
+* You can get fast realtime linting feedback with [tape-watch].
 
 (Your speed gains may be a bit different from my Pentium II, of course.)
+
+[tape-watch]: https://github.com/rstacruz/tape-watch.git
 
 ## Usage
 
@@ -41,46 +44,46 @@ Then create an `.eslintrc` in your project:
 }
 ```
 
-### Customization
+## Customization
 
-* #### files
-  It scans `**/*.js` and `**/*.jsx` by default. To configure what files to consume, use:
+#### files
+tape-eslint scans `**/*.js` and `**/*.jsx` by default. To configure what files to consume, use:
 
-  ```js
-  test('eslint', require('tape-eslint')({
-    files: [ 'index.js', 'test/*.js' ]
-  }))
-  ```
+```js
+test('eslint', require('tape-eslint')({
+  files: [ 'index.js', 'test/*.js' ]
+}))
+```
 
-* #### ignore
-  Some files are [ignored by default][ignores]. To add more files to ignore, use:
+#### ignore
+Some files are [ignored by default][ignores]. To add more files to ignore, use:
 
-  ```js
-  test('eslint', require('tape-eslint')({
-    ignore: [ 'app/**' ]
-  }))
-  ```
+```js
+test('eslint', require('tape-eslint')({
+  ignore: [ 'app/**' ]
+}))
+```
 
-* #### eslint
-  To specify options to pass onto `eslint.CLIEngine`, add them here. See [eslint's source](https://github.com/eslint/eslint/blob/v1.10.3/lib/cli-engine.js#L47-L60) for details.
+#### eslint
+To specify options to pass onto `eslint.CLIEngine`, add them here. See [eslint's source](https://github.com/eslint/eslint/blob/v1.10.3/lib/cli-engine.js#L47-L60) for details.
 
-  ```js
-  // to specify a different config file
-  test('eslint', require('tape-eslint')({
-    eslint: {
-      configFile: path.join(__dirname, 'eslintrc.json')
-    }
-  }))
-  ```
+```js
+// to specify a different config file
+test('eslint', require('tape-eslint')({
+  eslint: {
+    configFile: path.join(__dirname, 'eslintrc.json')
+  }
+}))
+```
 
-  ```js
-  // to specify your eslint config inline
-  test('eslint', require('tape-eslint')({
-    eslint: {
-      baseConfig: { extends: ['standard', 'standard-react'] }
-    }
-  }))
-  ```
+```js
+// to specify your eslint config inline
+test('eslint', require('tape-eslint')({
+  eslint: {
+    baseConfig: { extends: ['standard', 'standard-react'] }
+  }
+}))
+```
 
 [ignores]: /eslint.js
 
@@ -107,6 +110,18 @@ test('eslint', require('tape-eslint')())
 
 [standard]: https://www.npmjs.com/package/standard
 [tape]: https://github.com/substack/tape
+
+## Browserify
+
+If you use [Browserify] on your tests (eg: [smokestack], [tape-run], [budo], [hihat], [zuul], and so on), doing `require('tape-eslint')()` is a noop. In practice, this means you can use `tape-eslint` even if your tests are powered by browserify, and your test will now work in both the browser and Node.
+
+[zuul]: https://www.npmjs.com/package/zuul
+[tape-run]: https://www.npmjs.com/package/tape-run
+[budo]: https://github.com/mattdesl/budo
+[hihat]: https://www.npmjs.com/package/hihat
+[smokestack]: https://www.npmjs.com/package/smokestack
+[Browserify]: http://browserify.org/
+
 
 ## Thanks
 
