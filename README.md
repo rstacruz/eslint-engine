@@ -97,7 +97,7 @@ npm i --save-dev eslint-plugin-react eslint-config-standard-react
 ```js
 /* .eslintrc */
 {
-  "extends": ['standard', 'standard-react']
+  "extends": ["standard", "standard-react"]
 }
 ```
 
