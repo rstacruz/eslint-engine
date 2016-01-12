@@ -1,3 +1,10 @@
+## [v1.2.0]
+> Jan 12, 2016
+
+- Print 'ok' when passing.
+
+[v1.2.0]: https://github.com/rstacruz/tape-eslint/compare/v1.0.0...v1.2.0
+
 ## [v1.0.0]
 > Jan 12, 2016
 
