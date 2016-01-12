@@ -30,6 +30,7 @@
   "browser": "browser.js",
   "dependencies": {
     "deglob": "1.0.2",
-    "eslint": "1.10.3"
+    "eslint": "1.10.3",
+    "object-assign": "4.0.1"
   }
 }
