@@ -89,7 +89,9 @@ Then create an `.eslintrc` in your project:
 Here's an example of using [standard].
 
 ```
-npm i --save-dev tape-eslint eslint eslint-plugin-standard eslint-config-standard
+npm i --save-dev tape-eslint eslint
+npm i --save-dev eslint-plugin-standard eslint-config-standard
+npm i --save-dev eslint-plugin-react eslint-config-standard-react
 ```
 
 ```js
