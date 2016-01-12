@@ -1,13 +1,51 @@
-module.exports = function tapeStandard (options) {
+var deglob = require('deglob')
+var eslint = require('eslint')
+
+// https://github.com/sindresorhus/xo/blob/7644b9d9faf517b5b8f049b2083f13e7a803596c/index.js#L12-L21
+var DEFAULT_IGNORE = [
+  'node_modules/**',
+  'bower_components/**',
+  'coverage/**',
+  '{tmp,temp}/**',
+  '**/*.min.js',
+  '**/bundle.js',
+  'fixture{-*,}.{js,jsx}',
+  '{test/,}fixture{s,}/**',
+  'vendor/**',
+  'dist/**'
+]
+
+var DEGLOB_OPTIONS = {
+  useGitIgnore: true,
+  usePackageJson: true,
+  configKey: 'eslint',
+  ignore: DEFAULT_IGNORE
+}
+
+var DEFAULT_PATTERNS = [
+  '**/*.js',
+  '**/*.jsx'
+]
+
+function runEslint (files, options, cb) {
+  try {
+    deglob(files || DEFAULT_PATTERNS, DEGLOB_OPTIONS, function (err, files) {
+      if (err) return cb(err)
+      var cli = new eslint.CLIEngine({})
+      var res = cli.executeOnFiles(files)
+      cb(null, res)
+    })
+  } catch (err) {
+    cb(err)
+  }
+}
+
+module.exports = function tapeEslint (files, options) {
   if (!options) options = {}
-  var standard = options.using || require('standard')
-  var files = options.files || []
-  var sOptions = options.options || {}
 
   return function (t) {
-    standard.lintFiles(files, sOptions, function (err, res) {
+    runEslint(files, options, function (err, res) {
       if (err) return t.fail(err)
-      if (res.errorCount === 0 && res.warningCount === 0) t.pass('passed standard')
       errorify(t, res)
       t.end()
     })
