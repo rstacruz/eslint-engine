@@ -65,9 +65,19 @@ Then create an `.eslintrc` in your project:
   To specify options to pass onto `eslint.CLIEngine`, add them here. See [eslint's source](https://github.com/eslint/eslint/blob/v1.10.3/lib/cli-engine.js#L47-L60) for details.
 
   ```js
+  // to specify a different config file
   test('eslint', require('tape-eslint')({
     eslint: {
       configFile: path.join(__dirname, 'eslintrc.json')
+    }
+  }))
+  ```
+
+  ```js
+  // to specify your eslint config inline
+  test('eslint', require('tape-eslint')({
+    eslint: {
+      baseConfig: { extends: ['standard', 'standard-react'] }
     }
   }))
   ```
@@ -85,7 +95,7 @@ npm i --save-dev tape-eslint eslint eslint-plugin-standard eslint-config-standar
 ```js
 /* .eslintrc */
 {
-  "extends": ['standard']
+  "extends": ['standard', 'standard-react']
 }
 ```
 
