@@ -1,6 +1,6 @@
-# tape-eslint
+# eslint-engine
 
-> Integrate [eslint][] into your tape tests
+> Integrate [eslint][] easily
 
 ![](https://raw.githubusercontent.com/rstacruz/tape-standard/gh-pages/screenshot.png)
 

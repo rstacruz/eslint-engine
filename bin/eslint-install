@@ -1,0 +1,57 @@
+#!/usr/bin/env node
+
+var PRESETS = require('../presets.json')
+
+function install (preset) {
+  var data = PRESETS[preset]
+
+  if (data.rc) {
+    console.log('Writing .eslintrc')
+    require('fs').writeFileSync('.eslintrc', JSON.stringify(data.rc, null, 2) + '\n', 'utf-8')
+  }
+
+  if (data.npm) {
+    console.log('Installing: ' + data.npm.join(' '))
+    var args = ['install', '--save-dev', '--save-exact'].concat(data.npm)
+    var pid = require('child_process').spawn('npm', args, { stdio: 'inherit' })
+    pid.on('close', function (code) {
+      if (code !== 0) process.exit(code)
+    })
+  }
+}
+
+function help () {
+  console.log('Available presets:')
+  console.log('  ' + Object.keys(PRESETS).join('\n  '))
+}
+
+if (!module.parent) {
+  var cli = meow()
+  var preset = cli.input[0]
+  if (preset && PRESETS[preset]) {
+    install(preset)
+  } else {
+    console.log('Usage: eslint-install <preset>')
+    console.log('See --help for details.')
+    process.exit(1)
+  }
+}
+
+function meow () {
+  return require('meow')([
+    'Usage:',
+    '  $ eslint-install <preset>',
+    '',
+    'Available presets:',
+    '  ' + Object.keys(PRESETS).join('\n  '),
+    '',
+    'Options:',
+    '  -h, --help       show usage information',
+    '  -v, --version    print version info and exit'
+  ].join('\n'), {
+    boolean: ['help', 'version'],
+    alias: {
+      h: 'help', v: 'version'
+    }
+  })
+}

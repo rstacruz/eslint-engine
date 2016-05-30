@@ -1,0 +1,26 @@
+{
+  "standard": {
+    "rc": {
+      "extends": ["standard", "standard-jsx"]
+    },
+    "npm": [
+      "eslint@2",
+      "eslint-config-standard",
+      "eslint-config-standard-jsx",
+      "eslint-plugin-promise",
+      "eslint-plugin-react",
+      "eslint-plugin-standard"
+    ]
+  },
+  "standard-nojsx": {
+    "rc": {
+      "extends": ["standard"]
+    },
+    "npm": [
+      "eslint@2",
+      "eslint-config-standard",
+      "eslint-plugin-promise",
+      "eslint-plugin-standard"
+    ]
+  }
+}
