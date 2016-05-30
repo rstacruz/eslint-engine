@@ -15,8 +15,9 @@ function install (preset) {
   }
 
   if (data.npm) {
-    console.log('Installing: ' + data.npm.join(' '))
-    var args = ['install', '--save-dev', '--save-exact', 'eslint-engine'].concat(data.npm)
+    var pkgs = ['eslint-engine'].concat(data.npm)
+    console.log('Installing: ' + pkgs.join(' '))
+    var args = ['install', '--save-dev', '--save-exact'].concat(pkgs)
     var pid = require('child_process').spawn('npm', args, { stdio: 'inherit' })
     pid.on('close', function (code) {
       if (code !== 0) process.exit(code)
