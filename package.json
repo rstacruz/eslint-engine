@@ -1,10 +1,11 @@
 {
-  "name": "tape-eslint",
-  "description": "Lint files in tape tests",
-  "version": "1.2.1",
+  "name": "eslint-engine",
+  "description": "Check JavaScript syntax using eslint",
+  "version": "0.0.1",
   "author": "Rico Sta. Cruz <rico@ricostacruz.com>",
   "bin": {
-    "eslint-check": "bin/eslint-check"
+    "eslint-check": "bin/eslint-check",
+    "eslint-install": "bin/eslint-install"
   },
   "browser": {
     "tape": "tape.browser.js"

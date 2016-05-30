@@ -1,6 +1,6 @@
 # eslint-engine
 
-> Check JS syntax using [eslint][] conveniently in your project
+> Check JavaScript syntax using [eslint][] conveniently in your project
 
 eslint-engine is a streamlined way to use eslint in your project. Just type `eslint-check` and you're done.
 
