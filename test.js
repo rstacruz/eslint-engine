@@ -1,3 +1,3 @@
 var test = require('tape')
 
-test('standard', require('./index')())
+test('standard', require('./tape')())

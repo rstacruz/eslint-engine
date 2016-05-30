@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 var basename = require('path').basename
-var eslint = require('../eslint')
+var eslint = require('../index')
 
 function cli (options) {
   if (!options) options = {}
