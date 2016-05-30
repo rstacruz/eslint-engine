@@ -1,9 +1,13 @@
 #!/usr/bin/env node
 
 var PRESETS = require('../presets.json')
+var join = require('path').join
 
 function install (preset) {
   var data = PRESETS[preset]
+
+  console.log('Updating package.json')
+  updatePackage()
 
   if (data.rc) {
     console.log('Writing .eslintrc')
@@ -12,7 +16,7 @@ function install (preset) {
 
   if (data.npm) {
     console.log('Installing: ' + data.npm.join(' '))
-    var args = ['install', '--save-dev', '--save-exact'].concat(data.npm)
+    var args = ['install', '--save-dev', '--save-exact', 'eslint-engine'].concat(data.npm)
     var pid = require('child_process').spawn('npm', args, { stdio: 'inherit' })
     pid.on('close', function (code) {
       if (code !== 0) process.exit(code)
@@ -49,4 +53,14 @@ function meow () {
       h: 'help', v: 'version'
     }
   })
+}
+
+function updatePackage () {
+  var fname = join(process.cwd(), 'package.json')
+  var pkg = require(fname)
+
+  if (!pkg.scripts) pkg.scripts = {}
+  if (!pkg.scripts.lint) pkg.scripts.lint = 'eslint-check'
+
+  require('fs').writeFileSync(fname, JSON.stringify(pkg, null, 2) + '\n', 'utf-8')
 }

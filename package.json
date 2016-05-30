@@ -69,6 +69,7 @@
     "url": "git+https://github.com/rstacruz/eslint-engine.git"
   },
   "scripts": {
-    "test": "node test.js"
+    "test": "node test.js",
+    "lint": "eslint-check"
   }
 }
