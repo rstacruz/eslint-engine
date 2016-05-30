@@ -8,18 +8,6 @@
 
 [eslint]: http://eslint.org/
 
-## Rationale
-
-This offers a finer alternative to adding the *eslint* command as a separate test step in your `npm test`.
-
-* Runs in the same node process as tape, removing maybe 500ms of startup time.
-* Painlessly integrate eslint into your travisci.org tests.
-* You can get fast realtime linting feedback with [tape-watch].
-
-(Your speed gains may be a bit different from my Pentium II, of course.)
-
-[tape-watch]: https://github.com/rstacruz/tape-watch.git
-
 ## Usage
 
 Install it:
@@ -28,11 +16,20 @@ Install it:
 npm install -g eslint-engine
 ```
 
-### via CLI
+Then in your project, create an `.eslintrc`. One of these presets ought to help you out:
 
 ```sh
 eslint-install standard     # installs the 'standard' preset to your project
-eslint-check                # checks files in your project
+```
+
+Now run a check:
+
+```sh
+$ eslint-check
+
+index.js:53:11: Expected indentation of 8 space characters but found 10. (indent)
+index.js:57:39: Trailing spaces not allowed. (no-trailing-spaces)
+index.js:59:48: There should be no space before ','. (comma-spacing)
 ```
 
 ### via Tape

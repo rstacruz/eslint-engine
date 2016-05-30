@@ -1,12 +1,15 @@
 {
   "standard": {
     "rc": {
-      "extends": ["standard", "standard-jsx"]
+      "extends": [
+        "standard",
+        "standard-jsx"
+      ]
     },
     "npm": [
       "eslint@2",
-      "eslint-config-standard",
-      "eslint-config-standard-jsx",
+      "eslint-config-standard@5",
+      "eslint-config-standard-jsx@1",
       "eslint-plugin-promise",
       "eslint-plugin-react",
       "eslint-plugin-standard"
@@ -14,13 +17,29 @@
   },
   "standard-nojsx": {
     "rc": {
-      "extends": ["standard"]
+      "extends": [
+        "standard"
+      ]
     },
     "npm": [
       "eslint@2",
       "eslint-config-standard",
       "eslint-plugin-promise",
       "eslint-plugin-standard"
+    ]
+  },
+  "airbnb": {
+    "rc": {
+      "extends": [
+        "airbnb"
+      ]
+    },
+    "npm": [
+      "eslint@2",
+      "eslint-config-airbnb@9",
+      "eslint-plugin-import",
+      "eslint-plugin-react",
+      "eslint-plugin-jsx-a11y"
     ]
   }
 }
