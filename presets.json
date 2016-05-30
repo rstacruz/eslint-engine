@@ -41,5 +41,21 @@
       "eslint-plugin-react",
       "eslint-plugin-jsx-a11y"
     ]
+  },
+  "xo": {
+    "rc": {
+      "plugins": [
+        "xo"
+      ],
+      "extends": [
+        "xo",
+        "plugin:xo/recommended"
+      ]
+    },
+    "npm": [
+      "eslint@2",
+      "eslint-config-xo@0",
+      "eslint-plugin-xo@0"
+    ]
   }
 }
