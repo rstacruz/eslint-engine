@@ -1,6 +1,8 @@
 var deglob = require('deglob')
-var eslint = require('eslint')
 var assign = require('object-assign')
+
+var cwd = process.cwd()
+var eslint = requireHere('eslint')
 
 // https://github.com/sindresorhus/xo/blob/7644b9d9faf517b5b8f049b2083f13e7a803596c/index.js#L12-L21
 var DEFAULT_IGNORE = [
@@ -81,4 +83,9 @@ function getPackage () {
   } catch (err) {
     return {}
   }
+}
+
+function requireHere (module) {
+  var resolveModule = require('resolve').sync
+  return require(resolveModule(module, { basedir: cwd }))
 }
