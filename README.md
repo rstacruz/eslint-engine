@@ -1,6 +1,13 @@
 # eslint-engine
 
-> Integrate [eslint][] easily
+> Check JS syntax using [eslint][] conveniently in your project
+
+eslint-engine is a streamlined way to use eslint in your project. Just type `eslint-check` and you're done.
+
+- No need to specify files to check.
+- Some files are automatically ignored.
+- Presets for popular eslint configs can be installed easily.
+- You can lock eslint versions in your project.
 
 ![](https://raw.githubusercontent.com/rstacruz/tape-standard/gh-pages/screenshot.png)
 
@@ -19,7 +26,11 @@ npm install -g eslint-engine
 Then in your project, create an `.eslintrc`. One of these presets ought to help you out:
 
 ```sh
-eslint-install standard     # installs the 'standard' preset to your project
+# pick one
+eslint-install standard
+eslint-install airbnb
+eslint-install xo
+eslint-install --help   # view all
 ```
 
 Now run a check:
@@ -32,9 +43,35 @@ index.js:57:39: Trailing spaces not allowed. (no-trailing-spaces)
 index.js:59:48: There should be no space before ','. (comma-spacing)
 ```
 
+## Config
+
+`eslint.ignore` — You can add ignores via package.json.
+
+```js
+/* package.json */
+{
+  "eslint": {
+    "ignore": "lib/xyz"
+  }
+}
+```
+
+`eslint.include` — You can add additional files as well.
+
+```js
+/* package.json */
+{
+  "eslint": {
+    "include": "bin/*"
+  }
+}
+```
+
+## Alternative usage
+
 ### via Tape
 
-Add this test file to your tape suite:
+Add this test file to your [tape] suite:
 
 ```js
 test('eslint', require('eslint-engine/tape')())
@@ -61,62 +98,6 @@ eslint(options, (err, res) => {
 })
 ```
 
-## Customization
-
-#### files
-tape-eslint scans `**/*.js` and `**/*.jsx` by default. To configure what files to consume, use:
-
-```js
-test('eslint', require('tape-eslint')({
-  files: [ 'index.js', 'test/*.js' ]
-}))
-```
-
-#### ignore
-Some files are [ignored by default][ignores]. To add more files to ignore, use:
-
-```js
-test('eslint', require('tape-eslint')({
-  ignore: [ 'app/**' ]
-}))
-```
-
-#### eslint
-To specify options to pass onto `eslint.CLIEngine`, add them here. See [eslint's source](https://github.com/eslint/eslint/blob/v1.10.3/lib/cli-engine.js#L47-L60) for details.
-
-```js
-// to specify a different config file
-test('eslint', require('tape-eslint')({
-  eslint: {
-    configFile: path.join(__dirname, 'eslintrc.json')
-  }
-}))
-```
-
-```js
-// to specify your eslint config inline
-test('eslint', require('tape-eslint')({
-  eslint: {
-    baseConfig: { extends: ['standard', 'standard-react'] }
-  }
-}))
-```
-
-[ignores]: /eslint.js
-[standard]: https://www.npmjs.com/package/standard
-[tape]: https://github.com/substack/tape
-
-## Browserify
-
-If you use [Browserify] on your tests (eg: [smokestack], [tape-run], [budo], [hihat], [zuul], and so on), doing `require('tape-eslint')()` is a noop. In practice, this means you can use `tape-eslint` even if your tests are powered by browserify, and your test will now work in both the browser and Node.
-
-[zuul]: https://www.npmjs.com/package/zuul
-[tape-run]: https://www.npmjs.com/package/tape-run
-[budo]: https://github.com/mattdesl/budo
-[hihat]: https://www.npmjs.com/package/hihat
-[smokestack]: https://www.npmjs.com/package/smokestack
-[Browserify]: http://browserify.org/
-
 ## Thanks
 
 **tape-eslint** © 2016+, Rico Sta. Cruz. Released under the [MIT] License.<br>
@@ -128,3 +109,5 @@ Authored and maintained by Rico Sta. Cruz with help from contributors ([list][co
 
 [MIT]: http://mit-license.org/
 [contributors]: http://github.com/rstacruz/tape-eslint/contributors
+[standard]: https://www.npmjs.com/package/standard
+[tape]: https://github.com/substack/tape
