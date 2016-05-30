@@ -27,12 +27,37 @@
     "standard": "5.4.1",
     "tape": "4.4.0"
   },
+  "eslint": {
+    "include": "bin/*"
+  },
   "homepage": "https://github.com/rstacruz/tape-eslint#readme",
   "keywords": [
+    "JavaScript Standard Style",
+    "check",
+    "checker",
+    "code",
+    "code checker",
+    "code linter",
+    "code standards",
+    "code style",
+    "enforce",
     "eslint",
+    "eslintconfig",
+    "hint",
+    "jscs",
+    "jshint",
     "lint",
+    "lint",
+    "policy",
+    "quality",
+    "simple",
     "standard",
-    "tape"
+    "standard style",
+    "style",
+    "style checker",
+    "style linter",
+    "tape",
+    "verify"
   ],
   "license": "MIT",
   "main": "index.js",
@@ -45,8 +70,5 @@
   },
   "scripts": {
     "test": "node test.js"
-  },
-  "eslint": {
-    "include": "bin/*"
   }
 }
