@@ -25,23 +25,43 @@ This offers a finer alternative to adding the *eslint* command as a separate tes
 Install it:
 
 ```sh
-npm install --save-dev tape-eslint eslint
+npm install -g eslint-engine
 ```
 
-Then add this test file to your tape suite:
+### via CLI
+
+```sh
+eslint-install standard     # installs the 'standard' preset to your project
+eslint-check                # checks files in your project
+```
+
+### via Tape
+
+Add this test file to your tape suite:
 
 ```js
-test('eslint', require('tape-eslint')())
+test('eslint', require('eslint-engine/tape')())
 ```
 
-Then create an `.eslintrc` in your project:
+### via API
 
-```
-{
-  "rules": {
-    "semi": [2, "never"]
-  }
-}
+Access the programatic API this way:
+
+```js
+var eslint = require('eslint-engine')
+
+eslint(options, (err, res) => {
+  res.errorCount
+  res.results.forEach(item => {
+    item.filePath
+    item.messages.forEach(msg => {
+      msg.line
+      msg.column
+      msg.message
+      msg.ruleId
+    })
+  })
+})
 ```
 
 ## Customization
@@ -86,28 +106,6 @@ test('eslint', require('tape-eslint')({
 ```
 
 [ignores]: /eslint.js
-
-## Standard
-
-Here's an example of using [standard].
-
-```
-npm i --save-dev tape-eslint eslint
-npm i --save-dev eslint-plugin-standard eslint-config-standard
-npm i --save-dev eslint-plugin-react eslint-config-standard-react
-```
-
-```js
-/* .eslintrc */
-{
-  "extends": ["standard", "standard-react"]
-}
-```
-
-```js
-test('eslint', require('tape-eslint')())
-```
-
 [standard]: https://www.npmjs.com/package/standard
 [tape]: https://github.com/substack/tape
 
@@ -121,7 +119,6 @@ If you use [Browserify] on your tests (eg: [smokestack], [tape-run], [budo], [hi
 [hihat]: https://www.npmjs.com/package/hihat
 [smokestack]: https://www.npmjs.com/package/smokestack
 [Browserify]: http://browserify.org/
-
 
 ## Thanks
 
