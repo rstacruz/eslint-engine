@@ -6,7 +6,9 @@
   "bin": {
     "eslint-check": "bin/eslint-check"
   },
-  "browser": "browser.js",
+  "browser": {
+    "tape": "tape.browser.js"
+  },
   "bugs": {
     "url": "https://github.com/rstacruz/tape-eslint/issues"
   },
