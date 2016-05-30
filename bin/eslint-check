@@ -1,6 +1,11 @@
 #!/usr/bin/env node
 var basename = require('path').basename
 var eslint = require('../index')
+var delegateBin = require('../lib/delegate_bin')
+
+if (!module.parent) {
+  delegateBin('eslint-engine', 'bin/eslint-check') || cli()
+}
 
 function cli (options) {
   if (!options) options = {}
@@ -41,8 +46,4 @@ function meow (options) {
       h: 'help', v: 'version'
     }
   })
-}
-
-if (!module.parent) {
-  cli()
 }
