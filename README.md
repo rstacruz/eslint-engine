@@ -23,7 +23,7 @@ Install it:
 npm install -g eslint-engine
 ```
 
-Then in your project, create an `.eslintrc`. One of these presets ought to help you out:
+Then in your project, install `eslint` as a devDependency and create an `.eslintrc`. Or use one of these presets to help you out:
 
 ```sh
 # pick one
