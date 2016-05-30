@@ -20,11 +20,6 @@ function install (preset) {
   }
 }
 
-function help () {
-  console.log('Available presets:')
-  console.log('  ' + Object.keys(PRESETS).join('\n  '))
-}
-
 if (!module.parent) {
   var cli = meow()
   var preset = cli.input[0]

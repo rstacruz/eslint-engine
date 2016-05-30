@@ -38,6 +38,7 @@ var DEFAULT_PATTERNS = [
  * Available options:
  *
  * - `files` *(Array<String>)* - file globs
+ * - `include` *(Array<String>)* - additional file globs
  * - `ignore` *(Array<String>)* - ignore globs
  * - `eslint` *(Object)* — eslint config to use
  */
@@ -45,6 +46,14 @@ var DEFAULT_PATTERNS = [
 module.exports = function runEslint (options, cb) {
   try {
     if (!options) options = {}
+
+    var pkg = getPackage()
+    if (pkg.eslint) {
+      if (pkg.eslint.include) {
+        options.include = pkg.eslint.include.concat(options.include || [])
+      }
+    }
+
     var deglobOptions = DEGLOB_OPTIONS
     if (options.ignore) {
       deglobOptions = assign({}, deglobOptions, {
@@ -52,7 +61,10 @@ module.exports = function runEslint (options, cb) {
       })
     }
 
-    deglob(options.files || DEFAULT_PATTERNS, deglobOptions, function (err, files) {
+    var files = options.files || DEFAULT_PATTERNS
+    if (options.include) files = files.concat(options.include)
+
+    deglob(files, deglobOptions, function (err, files) {
       if (err) return cb(err)
       var cli = new eslint.CLIEngine(options.eslint)
       var res = cli.executeOnFiles(files)
@@ -63,3 +75,10 @@ module.exports = function runEslint (options, cb) {
   }
 }
 
+function getPackage () {
+  try {
+    return require('./package.json')
+  } catch (err) {
+    return {}
+  }
+}
