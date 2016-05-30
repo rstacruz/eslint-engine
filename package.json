@@ -11,7 +11,7 @@
     "tape": "tape.browser.js"
   },
   "bugs": {
-    "url": "https://github.com/rstacruz/tape-eslint/issues"
+    "url": "https://github.com/rstacruz/eslint-engine/issues"
   },
   "dependencies": {
     "deglob": "1.0.2",
@@ -33,7 +33,7 @@
   "eslint": {
     "include": "bin/*"
   },
-  "homepage": "https://github.com/rstacruz/tape-eslint#readme",
+  "homepage": "https://github.com/rstacruz/eslint-engine#readme",
   "keywords": [
     "JavaScript Standard Style",
     "check",
@@ -66,7 +66,7 @@
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rstacruz/tape-eslint.git"
+    "url": "git+https://github.com/rstacruz/eslint-engine.git"
   },
   "scripts": {
     "test": "node test.js"
