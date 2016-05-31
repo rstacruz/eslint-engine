@@ -137,7 +137,7 @@ Authored and maintained by Rico Sta. Cruz with help from contributors ([list][co
 > Twitter [@rstacruz](https://twitter.com/rstacruz)
 
 [MIT]: http://mit-license.org/
-[contributors]: http://github.com/rstacruz/tape-eslint/contributors
+[contributors]: http://github.com/rstacruz/eslint-engine/contributors
 [standard]: https://www.npmjs.com/package/standard
 [tape]: https://github.com/substack/tape
 [ava]: https://www.npmjs.com/package/ava
