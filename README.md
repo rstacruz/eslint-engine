@@ -69,9 +69,9 @@ index.js:59:48: There should be no space before ','. (comma-spacing)
 
 ## Alternative usage
 
-### via Tape
+### via Tape/Ava
 
-Add this test file to your [tape] suite:
+Add this test file to your [tape] or [ava] suite:
 
 ```js
 test('eslint', require('eslint-engine/tape')())
@@ -111,3 +111,4 @@ Authored and maintained by Rico Sta. Cruz with help from contributors ([list][co
 [contributors]: http://github.com/rstacruz/tape-eslint/contributors
 [standard]: https://www.npmjs.com/package/standard
 [tape]: https://github.com/substack/tape
+[ava]: https://www.npmjs.com/package/ava
