@@ -108,7 +108,7 @@ describe('eslint', require('eslint-engine/mocha')())
 
 ### via API
 
-Access the programatic API this way:
+Access the programmatic API this way:
 
 ```js
 var eslint = require('eslint-engine')
@@ -129,7 +129,7 @@ eslint(options, (err, res) => {
 
 ## Thanks
 
-**tape-eslint** © 2016+, Rico Sta. Cruz. Released under the [MIT] License.<br>
+**eslint-engine** © 2016+, Rico Sta. Cruz. Released under the [MIT] License.<br>
 Authored and maintained by Rico Sta. Cruz with help from contributors ([list][contributors]).
 
 > [ricostacruz.com](http://ricostacruz.com) &nbsp;&middot;&nbsp;
