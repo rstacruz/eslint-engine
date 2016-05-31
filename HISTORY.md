@@ -1,3 +1,11 @@
+## [v0.2.0]
+> May 31, 2016
+
+- Add mocha support.
+- Add `eslint-install xo` preset.
+
+[v0.2.0]: https://github.com/rstacruz/eslint-engine/compare/v0.1.0...v0.2.0
+
 ## [v0.1.0]
 > May 31, 2016
 
