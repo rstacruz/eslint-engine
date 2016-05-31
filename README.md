@@ -4,11 +4,6 @@
 
 eslint-engine is a streamlined way to use eslint in your project. Just type `eslint-check` and you're done.
 
-- No need to specify files to check.
-- Some files are automatically ignored.
-- Presets for popular eslint configs can be installed easily.
-- You can lock eslint versions in your project.
-
 ![](https://raw.githubusercontent.com/rstacruz/tape-standard/gh-pages/screenshot.png)
 
 [![Status](https://travis-ci.org/rstacruz/tape-eslint.svg?branch=master)](https://travis-ci.org/rstacruz/tape-eslint "See test builds")
@@ -42,6 +37,32 @@ index.js:53:11: Expected indentation of 8 space characters but found 10. (indent
 index.js:57:39: Trailing spaces not allowed. (no-trailing-spaces)
 index.js:59:48: There should be no space before ','. (comma-spacing)
 ```
+
+## Features
+
+- __Convenient:__ eslint-engine checks all the JS files in your project while ignoring some [common ignorables](index.js). It can also be ran as a global command, unlike eslint.
+
+  ```sh
+  # with eslint-engine
+  eslint-check
+
+  # with eslint
+  ./node_modules/.bin/eslint '**/*.js' --ignore-pattern='node_modules'
+  ```
+
+- __Easy to install:__ presets for popular eslint configs can be installed easily.
+
+  ```sh
+  # with eslint-engine
+  eslint-install standard
+
+  # with eslint
+  echo "{ extends: ['standard', 'standard-jsx' }" > .eslintrc
+  npm install --save eslint eslint-config-standard ... #snip
+  ./node_modules/.bin/eslint ... # snip
+  ```
+
+- __Test runner integrations:__ eslint-engine can integrate with tape, ava, and mocha to provide you with fast linting as part of your test suite.
 
 ## Config
 
