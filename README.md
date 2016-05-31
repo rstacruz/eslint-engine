@@ -77,6 +77,14 @@ Add this test file to your [tape] or [ava] suite:
 test('eslint', require('eslint-engine/tape')())
 ```
 
+### via Mocha
+
+Add this test file to your [mocha] suite:
+
+```js
+describe('eslint', require('eslint-engine/mocha')())
+```
+
 ### via API
 
 Access the programatic API this way:
@@ -112,3 +120,4 @@ Authored and maintained by Rico Sta. Cruz with help from contributors ([list][co
 [standard]: https://www.npmjs.com/package/standard
 [tape]: https://github.com/substack/tape
 [ava]: https://www.npmjs.com/package/ava
+[mocha]: https://www.npmjs.com/package/mocha
