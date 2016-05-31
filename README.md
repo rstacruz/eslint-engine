@@ -57,9 +57,9 @@ index.js:59:48: There should be no space before ','. (comma-spacing)
   eslint-install standard
 
   # with eslint
-  echo "{ extends: ['standard', 'standard-jsx' }" > .eslintrc
+  echo "{ extends: ['standard', 'standard-jsx'] }" > .eslintrc
   npm install --save eslint eslint-config-standard ... #snip
-  ./node_modules/.bin/eslint ... # snip
+  ./node_modules/.bin/eslint ... #snip
   ```
 
 - __Test runner integrations:__ eslint-engine can integrate with tape, ava, and mocha to provide you with fast linting as part of your test suite.
