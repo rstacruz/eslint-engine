@@ -2,6 +2,7 @@
 var basename = require('path').basename
 var eslint = require('../index')
 var delegateBin = require('../lib/delegate_bin')
+var errorify = require('../lib/errorify')
 
 if (!module.parent) {
   delegateBin('eslint-engine', 'bin/eslint-check') || cli()
@@ -15,13 +16,8 @@ function cli (options) {
   var eslintOpts = { files: cli.input.length ? cli.input : undefined }
   eslint(eslintOpts, function (err, res) {
     if (err) throw err
-    res.results.forEach(function (res) {
-      var file = res.filePath.replace(process.cwd() + require('path').sep, '')
-      res.messages.forEach(function (msg) {
-        console.log('' + file + ':' + msg.line + ':' + msg.column + ':',
-          msg.message,
-          '(' + msg.ruleId + ')')
-      })
+    errorify(res, function (_, msg) {
+      console.log(msg.description)
     })
     if (res.errorCount > 0) process.exit(1)
   })

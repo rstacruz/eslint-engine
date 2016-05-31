@@ -69,7 +69,7 @@
     "url": "git+https://github.com/rstacruz/eslint-engine.git"
   },
   "scripts": {
-    "test": "node test.js",
+    "test": "node test/tape.js",
     "lint": "eslint-check"
   }
 }

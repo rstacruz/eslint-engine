@@ -7,7 +7,7 @@ module.exports = function tapeEslint (options) {
       if (err) return t.fail(err)
       var count = res.errorCount + res.warningCount
       if (count === 0) t.pass('passed')
-      else errorify(res, function (_, msg) { t.fail(msg) })
+      else errorify(res, function (_, msg) { t.fail(msg.description) })
       t.end()
     })
   }
