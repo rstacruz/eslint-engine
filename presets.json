@@ -28,6 +28,23 @@
       "eslint-plugin-standard"
     ]
   },
+  "semistandard": {
+    "rc": {
+      "extends": [
+        "semistandard",
+        "standard-jsx"
+      ]
+    },
+    "npm": [
+      "eslint@2",
+      "eslint-config-standard@5",
+      "eslint-config-semistandard@6",
+      "eslint-config-standard-jsx@1",
+      "eslint-plugin-promise",
+      "eslint-plugin-react",
+      "eslint-plugin-standard"
+    ]
+  },
   "airbnb": {
     "rc": {
       "extends": [
