@@ -1,3 +1,10 @@
+## [v0.3.0]
+> Jun  3, 2016
+
+- Add `eslint-install semistandard` preset.
+
+[v0.3.0]: https://github.com/rstacruz/eslint-engine/compare/v0.2.0...v0.3.0
+
 ## [v0.2.0]
 > May 31, 2016
 
